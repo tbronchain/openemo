@@ -1,4 +1,5 @@
 Patch aimed to make the Emotic EPOC EEG headset working on Linux with OpenViBE
+Tested on Ubuntu 12.04
 
 1- Download the openemo patch
 	-> we will assumes that the sources are located in "$HOME/openemo"
