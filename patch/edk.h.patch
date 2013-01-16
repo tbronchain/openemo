@@ -1,0 +1,8 @@
+29c29
+< #define EDK_API
+---
+> #define EDK_API extern
+35c35
+< #define EDK_API
+---
+> #define EDK_API extern

@@ -1,0 +1,28 @@
+104,105c104,119
+< 		
+< 	if(_putenv_s("PATH",m_sCommandForPathModification) != 0)
+---
+> 
+>         std::string ps = getenv("PATH");
+>         if (strlen(m_sCommandForPathModification.toASCIIString()) > 0) {
+>           if (ps.length() > 0)
+>             ps += ":";
+>           ps += m_sCommandForPathModification.toASCIIString();
+>         }
+>         int envReturn = 0;
+> #ifdef _WIN32
+>         envReturn = _putenv_s("PATH", (char*)ps.c_str());
+> #else
+>         ps.insert(0, "PATH=");
+>         envReturn = putenv((char*)ps.c_str());
+> #endif // !_WIN32
+> 
+> 	if (envReturn)
+173a188
+> #ifdef _WIN32
+189a205,209
+> #else
+>         // hasn't find any way to do this try/catch on linux
+>         m_tEEEventHandle = EE_EmoEngineEventCreate();
+>         m_ui32EDK_LastErrorCode = EE_EngineConnect();
+> #endif // !_WIN32

@@ -1,0 +1,6 @@
+12c12,14
+< #include <windows.h>
+---
+> #ifdef _WIN32
+> # include <windows.h>
+> #endif // !_WIN32
